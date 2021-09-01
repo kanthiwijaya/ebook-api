@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,4 +15,7 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/me', [AuthController::class, 'me']);
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::resource('/books', BookController::class)->except('create','edit');
